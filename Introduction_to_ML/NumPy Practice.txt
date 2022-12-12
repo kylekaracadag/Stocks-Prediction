@@ -1,0 +1,12 @@
+NumPy Practice
+
+1. Create an np array of 10 zeros
+2. Create an np array of 10 ones
+3. Create an np array of ints from 10 to 50
+4. Create an np array of even integers from 10 to 50
+5. Create a 3x3 matrix with numbers from 0 - 8
+6. Generate an array of 10 random numbers from 0-1
+7. Create a 1d np array and reshape it to be 2d
+8. Get summ of all values in that array
+9. Get the mean, standard deviation, variance in the array
+10. Get the sum of all columns in that array
