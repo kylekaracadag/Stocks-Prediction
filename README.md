@@ -19,14 +19,14 @@ Using the same file path install the libraries by typing the following command:
 pip install -r requirements.txt
 ```
 
-### Navigating the Repository
-#### Folders:
+## Navigating the Repository
+### Folders:
 - Datasets: Includes all the datasets that were used to train the model. <br>
 - Introduction_to_ML: A basic introduction to machine learning with Python for members in our team new to artificial intelligence. <br>
 - Models: Downloaded models that can be reused without having to re-train the model for making stocks predictions. <br>
 - Predictions: csv files with datapoints that include all the stock price predictions that were made. <br>
 
-#### Files:
+### Files:
 - Candle_Sticks_LSTM.ipynb: Generate candle sticks based on the real stock prices.<br>
 - Candle_Sticks_Predictions.ipynb: Generate candle sticks based on the predicted stock prices.<br>
 - Fix Dataset.ipynb: Program to improve the accuracy of the prediction csv file.<br>
