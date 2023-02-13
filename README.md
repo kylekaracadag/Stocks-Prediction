@@ -29,7 +29,6 @@ pip install -r requirements.txt
 ### Files:
 - Candle_Sticks_LSTM.ipynb: Generate candle sticks based on the real stock prices.<br>
 - Candle_Sticks_Predictions.ipynb: Generate candle sticks based on the predicted stock prices.<br>
-- Fix Dataset.ipynb: Program to improve the accuracy of the prediction csv file.<br>
 - LSTM_Model.ipynb: The main notebook for our project. The model that was used to make predictions.<br>
 - dataset.ipynb: Program that is used to extract datasets from yfinance given a specific time frame.<br>
 - requirements.txt: Text file that contains all the required libraries for this project.<br>
