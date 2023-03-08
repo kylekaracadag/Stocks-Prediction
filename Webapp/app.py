@@ -8,8 +8,8 @@ import plotly.graph_objects as go
 app = Dash(__name__)
 
 # will be changed later just for testing am pulling file like so, will prbably change to pulling straight from the git to make work for everyone
-data = pd.read_csv('Desktop\\Stonks\\Stocks-Prediction\\Datasets\\companys.csv')
-
+data = pd.read_csv('CompanyList.csv')
+data2 = pd.read_csv('Prediction.csv')
 # layout for the divs
 app.layout = html.Div([
     #title 
@@ -42,8 +42,8 @@ app.layout = html.Div([
     ),
     dcc.Graph(id="graph1"),# shows actual candle sticks 
     dcc.Dropdown(
-            data['.csv File'].unique(),
-            'A_data.csv',# starting selection not needed but good to have
+            data2['.csv'].unique(),
+            'Altered Predictions.csv',# starting selection not needed but good to have
             id='file1'
         ),
     dcc.RadioItems(
@@ -71,7 +71,7 @@ app.layout = html.Div([
 def update_Graph(mode,mode1,file):
 
     # will be changed later just for testing am pulling file like so 
-    df = pd.read_csv('Desktop\\Stonks\\Stocks-Prediction\\Datasets\\' + file)
+    df = pd.read_csv("..\\datasets\\" + file)
     
     fig = px.scatter(
         df, x="Date", y=mode1, 
@@ -90,7 +90,7 @@ def update_Graph(mode,mode1,file):
 def update_Graph(file,value):
 
     # will be changed later just for testing am pulling file like so 
-    df = pd.read_csv('Desktop\\Stonks\\Stocks-Prediction\\Datasets\\' + file)
+    df = pd.read_csv("..\\datasets\\" + file)
     
     fig = go.Figure(go.Candlestick(
         x=df['Date'],
@@ -114,7 +114,7 @@ def update_Graph(file,value):
 def update_Graph(mode,mode1,file):
 
     # will be changed later just for testing am pulling file like so 
-    df = pd.read_csv('Desktop\\Stonks\\Stocks-Prediction\\Datasets\\' + file)
+    df = pd.read_csv("..\\Predictions\\" + file)
     
     fig = px.scatter(
         df, x="Date", y=mode1, 
