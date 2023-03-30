@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 ### Files:
 - LSTM_Model.ipynb: The main notebook for our project. The model that was used to make predictions that can be found in Data_Visualization.ipynb or [Results](#Results).<br>
-- Data_Visualization.ipynb: This file is used to visualize both the actual data and predicted data in line chart and candle stick forms.<br>
+- Data_Visualization.ipynb: This file is used to visualize both the actual data and predicted data in line chart and candle stick forms. The candle stick charts do not get displayed if the file is opened from GitHub but the screenshots are posted in "Results". Developers can also choose to manually run the file for a more detailed chart.<br>
 - ARIMA_Model.ipynb: The ARIMA model we implemented using Python to make predictions on the Open/Close price.<br>
 - dataset.ipynb: Program that is used to extract datasets from yfinance given a specific time frame. The dataset is updated every week and posted to Datasets/MSFT_2023-01-13.csv . The dataset consists of Open/Close/High/Low prices for every minute as well as the corresponding date time from 2023-01-13 to today. <br>
 - requirements.txt: Text file that contains all the required libraries for this project.<br>
