@@ -29,12 +29,13 @@ pip install -r requirements.txt
 - Introduction_to_ML: A basic introduction to machine learning with Python for members in our team new to artificial intelligence. <br>
 - Models: Downloaded models that can be reused without having to re-train the model for making stocks predictions. <br>
 - Predictions: csv files with datapoints that include all the stock price predictions that were made. <br>
+- Webapp: This folder contains the neccessary files to run our web application which displays all the charts from Data_Visualization.ipynb.<br>
 
 ### Files:
-- Candle_Sticks_LSTM.ipynb: Generate candle sticks based on the real stock prices.<br>
-- Candle_Sticks_Predictions.ipynb: Generate candle sticks based on the predicted stock prices.<br>
-- LSTM_Model.ipynb: The main notebook for our project. The model that was used to make predictions.<br>
-- dataset.ipynb: Program that is used to extract datasets from yfinance given a specific time frame.<br>
+- LSTM_Model.ipynb: The main notebook for our project. The model that was used to make predictions that can be found in Data_Visualization.ipynb or [Results](#Results).<br>
+- Data_Visualization.ipynb: This file is used to visualize both the actual data and predicted data in line chart and candle stick forms.<br>
+- ARIMA_Model.ipynb: The ARIMA model we implemented using Python to make predictions on the Open/Close price.<br>
+- dataset.ipynb: Program that is used to extract datasets from yfinance given a specific time frame. The dataset is updated every week and posted to Datasets/MSFT_2023-01-13.csv . The dataset consists of Open/Close/High/Low prices for every minute as well as the corresponding date time from 2023-01-13 to today. <br>
 - requirements.txt: Text file that contains all the required libraries for this project.<br>
 
 ## Results
