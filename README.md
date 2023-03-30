@@ -2,6 +2,10 @@
 
 2022-2023 Stocks Prediction is an ongoing project developed by the Artificial Intelligence club of the University of Central Florida.
 
+  - [Getting Started](#Getting Started)
+  - [Navigating the Repository](#Navigating the Repository)
+  - [Results](#Results)
+
 ## Getting Started
 
 Please follow the instructions below to install the components required for this project:
