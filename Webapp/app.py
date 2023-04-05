@@ -21,13 +21,6 @@ app.layout = html.Div([
                 options = data['.csv File'].unique(),
                 value = 'A_data.csv'# starting selection not needed but good to have
             ),
-            html.H4('Graph to compare to: '),
-            dcc.Dropdown(
-                id='compare1',
-                className="dropdown",
-                options = data['.csv File'].unique(),
-                value = 'A_data.csv'# starting selection not needed but good to have
-            ),
     dcc.RadioItems(
         id='hovermode',
         className="hovermode",
@@ -43,21 +36,21 @@ app.layout = html.Div([
     ),
 
     dcc.Graph(id="graph", className="Graph1"),# What shows our graph grabs the output from our callback output
+    html.H4('Dataset for candle sticks: '),
+            dcc.Dropdown(
+                id='compare1',
+                className="dropdown",
+                options = data['.csv File'].unique(),
+                value = 'A_data.csv'# starting selection not needed but good to have
+            ),
     dcc.Checklist(
         id='toggle-rangeslider',
         options=[{'label': 'Include Rangeslider', 
                   'value': 'slider'}],
         value=['slider']
     ),
+   
     dcc.Graph(id="graph1"),# shows actual candle sticks 
-    html.H3(
-         dcc.Dropdown(
-            data2['.csv'].unique(),
-            'Altered%20Predictions.csv',# starting selection not needed but good to have
-            id='file1'
-        ),
-    ),
-
     dcc.RadioItems(
         id='hovermode1',
         inline=True,
@@ -70,11 +63,23 @@ app.layout = html.Div([
             options=['Close', 'Open', 'High'],
             value='Close'# what the starting selection will be
             ),
+             
+         dcc.Dropdown(
+            data2['.csv'].unique(),
+            value='3-13-2023%Altered%Predictions.csv',# starting selection not needed but good to have
+            id='file1'
+        ),
     dcc.Graph(id="graph2"),
     dcc.Dropdown(
         data2['.csv'].unique(),
-        '3-13-2023%Altered%Predictions.csv',# starting selection not needed but good to have
+        value= '3-13-2023%Altered%Predictions.csv',# starting selection not needed but good to have
         id='candlestick_predictions'
+    ),
+     dcc.Checklist(
+        id='toggle-rangeslider1',
+        options=[{'label': 'Include Rangeslider', 
+                  'value': 'slider'}],
+        value=['slider']
     ),
     dcc.Graph(id="graph3"),# shows actual candle sticks 
 ])      
@@ -101,7 +106,14 @@ def update_Graph(mode,mode1,file,compare1):
     # fig.add_scatter(x=df1, y=mode1)
     fig.update_traces(
         mode="lines", hovertemplate=None)
-    fig.update_layout(hovermode=mode,paper_bgcolor="lightslategray", plot_bgcolor="lightslategray")
+
+    fig.update_layout(
+        hovermode=mode,
+        paper_bgcolor="#313338", plot_bgcolor="#313338",
+        font_color="white",
+        title_font_color="white",
+        legend_title_font_color="white"
+    )
 
     return fig
 #--------------------------------------------------------
@@ -138,20 +150,27 @@ def update_Graph(file,value):
             dict(bounds=[16, 9.5], pattern="hour"), #hide hours outside of 9am-5pm
         ]
     )
-
+    fig.update_layout(
+        xaxis_rangeslider_visible='slider' in value,
+        paper_bgcolor="#313338", plot_bgcolor="#313338",
+        font_color="white",
+        title_font_color="white",
+        legend_title_font_color="white"
+    )
     return fig
 
 
 @app.callback(
     Output("graph3", "figure"), 
     Input("candlestick_predictions","value"),
-    Input("toggle-rangeslider", "value"))
+    Input("toggle-rangeslider1", "value"))
 def update_Graph(file,value):
 
+    fig = go.Figure()
     # This now allows anyone to use the site without changing the path to the file 
     df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Predictions/" + file)
     
-    fig = go.Figure()
+   
     fig.add_trace(
         go.Candlestick(
             x=df["Date"],
@@ -173,7 +192,13 @@ def update_Graph(file,value):
             dict(bounds=[16, 9.5], pattern="hour"), #hide hours outside of 9am-5pm
         ]
     )
-
+    fig.update_layout(
+        xaxis_rangeslider_visible='slider' in value,
+        paper_bgcolor="#313338", plot_bgcolor="#313338",
+        font_color="white",
+        title_font_color="white",
+        legend_title_font_color="white"
+    )
     return fig
 
 
@@ -185,16 +210,23 @@ def update_Graph(file,value):
     Input("file1","value"))
 
 def update_Graph(mode,mode1,file):
-
+    
     # This now allows anyone to use the site without changing the path to the file 
     df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Predictions/" + file)
-    
+ 
     fig = px.scatter(
         df, x="Unnamed: 0", y=mode1, 
         title= file + " " +  mode1 + " price")
     fig.update_traces(
         mode="lines", hovertemplate=None)
-    fig.update_layout(hovermode=mode,paper_bgcolor="lightslategray", plot_bgcolor="lightslategray")
+
+    fig.update_layout(
+         hovermode=mode,
+        paper_bgcolor="#313338", plot_bgcolor="#313338",
+        font_color="white",
+        title_font_color="white",
+        legend_title_font_color="white"
+    )
     return fig
 
 app.run_server(debug=True)

@@ -3,7 +3,7 @@ body {
     font-family: Helvetica, sans-serif;
     background-color: lightslategrey;
     color: #fff;
-    background: lightslategray;
+    background: #181a1f;
 }
 * {
     box-sizing: border-box;
@@ -109,7 +109,7 @@ Div{
 
 /*This controlls the dropdown boxes*/
 .Select, .Select div, .Select input,.Select span,.VirtualizedSelectFocusedOption {
-    background-color: lightslategray;
+    background-color: #181a1f;
     color: white;
     font-family: 'Times New Roman';
     size: 256px;
