@@ -53,11 +53,11 @@ app.layout = html.Div([
     html.H3(
          dcc.Dropdown(
             data2['.csv'].unique(),
-            'Altered Predictions.csv',# starting selection not needed but good to have
+            'Altered%20Predictions.csv',# starting selection not needed but good to have
             id='file1'
         ),
     ),
-   
+
     dcc.RadioItems(
         id='hovermode1',
         inline=True,
@@ -70,9 +70,15 @@ app.layout = html.Div([
             options=['Close', 'Open', 'High'],
             value='Close'# what the starting selection will be
             ),
-    dcc.Graph(id="graph2")
+    dcc.Graph(id="graph2"),
+    dcc.Dropdown(
+        data2['.csv'].unique(),
+        '3-13-2023%Altered%Predictions.csv',# starting selection not needed but good to have
+        id='candlestick_predictions'
+    ),
+    dcc.Graph(id="graph3"),# shows actual candle sticks 
 ])      
-                       
+
 
 # for Acutal Data graphs
 @app.callback(
@@ -87,12 +93,12 @@ def update_Graph(mode,mode1,file,compare1):
 
     # This now allows anyone to use the site without changing the path to the file 
     df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Datasets/" + file)
-    df1 = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Datasets/" + compare1)
+    # df1 = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Datasets/" + compare1)
 
     fig = px.scatter(
         df, x="Date", y=mode1, 
         title= file + " " +  mode1 + " price")
-    fig.add_scatter(x=df1, y=mode1)
+    # fig.add_scatter(x=df1, y=mode1)
     fig.update_traces(
         mode="lines", hovertemplate=None)
     fig.update_layout(hovermode=mode,paper_bgcolor="lightslategray", plot_bgcolor="lightslategray")
@@ -103,25 +109,73 @@ def update_Graph(mode,mode1,file,compare1):
 #For Candle sticks 
 @app.callback(
     Output("graph1", "figure"), 
-    Input("file","value"),
+    Input("compare1","value"),
     Input("toggle-rangeslider", "value"))
 def update_Graph(file,value):
 
     # This now allows anyone to use the site without changing the path to the file 
     df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Datasets/" + file)
     
-    fig = go.Figure(go.Candlestick(
-        x=df['Date'],
-        open=df['Open'],
-        high=df['High'],
-        low=df['Low'],
-        close=df['Close']
-    ))
-    fig.update_layout(
-        xaxis_rangeslider_visible='slider' in value,
-        paper_bgcolor="lightslategray", plot_bgcolor="lightslategray"
+    fig = go.Figure()
+    fig.add_trace(
+        go.Candlestick(
+            x=df["Date"],
+            open = df["Open"],
+            high = df["High"],
+            low = df["Low"],
+            close = df["Close"]
+        )
     )
+
+    fig.update_yaxes(fixedrange=False)
+    fig.update_layout(xaxis_rangeslider_visible = False, title = 'MSFT SHARE PRICE')
+    fig.update_xaxes(title_text = 'Date')
+    fig.update_yaxes(title_text = 'MSFT Close Price', tickprefix = '$')
+    fig.update_xaxes(
+        rangeslider_visible=True,
+        rangebreaks=[
+            dict(bounds=["sat", "mon"]), #hide weekends
+            dict(bounds=[16, 9.5], pattern="hour"), #hide hours outside of 9am-5pm
+        ]
+    )
+
     return fig
+
+
+@app.callback(
+    Output("graph3", "figure"), 
+    Input("candlestick_predictions","value"),
+    Input("toggle-rangeslider", "value"))
+def update_Graph(file,value):
+
+    # This now allows anyone to use the site without changing the path to the file 
+    df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Predictions/" + file)
+    
+    fig = go.Figure()
+    fig.add_trace(
+        go.Candlestick(
+            x=df["Date"],
+            open = df["Open"],
+            high = df["High"],
+            low = df["Low"],
+            close = df["Close"]
+        )
+    )
+
+    fig.update_yaxes(fixedrange=False)
+    fig.update_layout(xaxis_rangeslider_visible = False, title = 'MSFT SHARE PRICE')
+    fig.update_xaxes(title_text = 'Date')
+    fig.update_yaxes(title_text = 'MSFT Close Price', tickprefix = '$')
+    fig.update_xaxes(
+        rangeslider_visible=True,
+        rangebreaks=[
+            dict(bounds=["sat", "mon"]), #hide weekends
+            dict(bounds=[16, 9.5], pattern="hour"), #hide hours outside of 9am-5pm
+        ]
+    )
+
+    return fig
+
 
 #------------------------------------
 @app.callback(
@@ -133,7 +187,7 @@ def update_Graph(file,value):
 def update_Graph(mode,mode1,file):
 
     # This now allows anyone to use the site without changing the path to the file 
-    df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Predictions/Old%20Predictions/" + file)
+    df = pd.read_csv("https://raw.githubusercontent.com/kylekaracadag/Stocks-Prediction/main/Predictions/" + file)
     
     fig = px.scatter(
         df, x="Unnamed: 0", y=mode1, 
@@ -142,6 +196,5 @@ def update_Graph(mode,mode1,file):
         mode="lines", hovertemplate=None)
     fig.update_layout(hovermode=mode,paper_bgcolor="lightslategray", plot_bgcolor="lightslategray")
     return fig
-  
 
 app.run_server(debug=True)
