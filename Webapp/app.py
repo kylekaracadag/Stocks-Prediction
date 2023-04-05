@@ -36,22 +36,7 @@ app.layout = html.Div([
     ),
 
     dcc.Graph(id="graph", className="Graph1"),# What shows our graph grabs the output from our callback output
-    html.H4('Dataset for candle sticks: '),
-            dcc.Dropdown(
-                id='compare1',
-                className="dropdown",
-                options = data['.csv File'].unique(),
-                value = 'A_data.csv'# starting selection not needed but good to have
-            ),
-    dcc.Checklist(
-        id='toggle-rangeslider',
-        options=[{'label': 'Include Rangeslider', 
-                  'value': 'slider'}],
-        value=['slider']
-    ),
-   
-    dcc.Graph(id="graph1"),# shows actual candle sticks 
-    dcc.RadioItems(
+        dcc.RadioItems(
         id='hovermode1',
         inline=True,
         options=['x', 'x unified', 'closest'], 
@@ -70,6 +55,21 @@ app.layout = html.Div([
             id='file1'
         ),
     dcc.Graph(id="graph2"),
+    html.H4('Dataset for candle sticks: '),
+            dcc.Dropdown(
+                id='compare1',
+                className="dropdown",
+                options = data['.csv File'].unique(),
+                value = 'A_data.csv'# starting selection not needed but good to have
+            ),
+    dcc.Checklist(
+        id='toggle-rangeslider',
+        options=[{'label': 'Include Rangeslider', 
+                  'value': 'slider'}],
+        value=['slider']
+    ),
+   
+    dcc.Graph(id="graph1"),# shows actual candle sticks 
     dcc.Dropdown(
         data2['.csv'].unique(),
         value= '3-13-2023%Altered%Predictions.csv',# starting selection not needed but good to have
