@@ -3,14 +3,17 @@ body {
     font-family: Helvetica, sans-serif;
     background-color: lightslategrey;
     color: #fff;
-    background: lightslategray;
+    background: #18181a;
 }
 * {
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.H4{
     margin: 0;
+    text-align: center;
+    color: white;
+    font-size: 80px;
 }
 a{
     text-decoration: none;
@@ -89,34 +92,43 @@ u1{
 }
 
 Div{
-    color: black;
+    color: rgb(0, 0, 0);
     font-family: 'Times New Roman', Times, serif;
     
 }
 .hovermode{
-    color: black;
-    background-color: lightslategrey;
+    background-color: #18181a;
+    color: white;
     
 }
-.dropdown{
-    color: black;
-    background-color: lightslategray;
-}
+
 .Graph1{
     color: black;
     background-color: lightslategray;
 }
-
+ .Select-control .Select-value .Select-value-label::selection {
+    color: red;  /* Change the selected text color to red */
+}
 /*This controlls the dropdown boxes*/
-.Select, .Select div, .Select input,.Select span,.VirtualizedSelectFocusedOption {
-    background-color: lightslategray;
-    color: white;
+.dropdown .Select, .Select div, .Select input,.Select span,.VirtualizedSelectFocusedOption {
+    background-color: #18181a;
+    color: rgb(255, 252, 252);
     font-family: 'Times New Roman';
     size: 256px;
   }
 
+
+
 .des{
     color: white;
-    font-size: 15px;
+    font-size: 40px;
 }
-
+.spacer{
+    color: #18181a;
+    font-size: 100px;
+}
+.candle{
+    color: white;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
