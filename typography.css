@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    background-color: lightslategrey;
+    color: #fff;
+    background: #18181a;
+}
+* {
+    box-sizing: border-box;
+}
+
+.H4{
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-size: 80px;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+p{
+    color: #6b6f8a;
+    font-size: 0.9em;
+}
+small{
+    color:#6b6f8a;
+}
+u1{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: lightslategray;
+}
+::-webkit-scrollbar-thumb{
+    background:#55586b;
+}
+.navbar{
+    text-decoration: none;
+    background: #1c2147;
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+}
+.navbar .containter{
+    max-width: 1250px;
+    padding: 1em 2em;
+    margin: 0 auto;
+}
+.navbar .containter > div{
+    display: grid;
+    grid-template-columns:1fr 6fr;
+    align-items: center;
+}
+.navbar .menu, .navbar .social-media{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar u1{
+    display: inline-block;
+}
+.navbar u1 li{
+    display: inline-block;
+    margin: 0 0.5em;
+}
+.navbar u1 a{
+    font-size:0.8em;
+    text-transform: uppercase;
+    color: #6b6f8a;
+    padding-bottom: 0.2em;
+    transition:0.3s;
+}
+.navbar u1 a:hover{
+    color: #fff;
+}
+.navbar .active{
+    border-bottom: 2px #03dcee solid;
+    color: #fff;
+}
+.navbar .containter .menu-btn{
+    display: none;
+}
+.options span{
+    font-size: 2em;
+    color: #fff;
+}
+
+Div{
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.hovermode{
+    background-color: #18181a;
+    color: white;
+    
+}
+
+.Graph1{
+    color: black;
+    background-color: lightslategray;
+}
+ .Select-control .Select-value .Select-value-label::selection {
+    color: red;  /* Change the selected text color to red */
+}
+/*This controlls the dropdown boxes*/
+.dropdown .Select, .Select div, .Select input,.Select span,.VirtualizedSelectFocusedOption {
+    background-color: #18181a;
+    color: rgb(255, 252, 252);
+    font-family: 'Times New Roman';
+    size: 256px;
+  }
+
+
+
+.des{
+    color: white;
+    font-size: 40px;
+}
+.spacer{
+    color: #18181a;
+    font-size: 100px;
+}
+.candle{
+    color: white;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
